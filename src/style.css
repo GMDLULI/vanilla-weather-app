@@ -1,3 +1,42 @@
-h1 {
-  color: green;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+.units {
+  line-height: 24px;
+}
+
+.border {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 10px;
+  border: 20px solid aliceblue;
+  border-radius: 5px;
+}
+
+.temp {
+  color: rgb(32, 33, 36);
+  font-size: 48px;
+  font-weight: 400;
+  height: 338px;
+  width: 652px;
+  line-height: 64px;
+  vertical-align: top;
+}
+
+.weather-temparature img {
+  margin-right: 10px;
+  height: 64px;
+  width: 64px;
+}
+.units {
+  position: relative;
+  font-size: 16px;
+  top: 5px;
+  right: 12px;
 }

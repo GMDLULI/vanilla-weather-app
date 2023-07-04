@@ -10,28 +10,37 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="src/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
-      <h1>New York</h1>
-      <ul>
-        <li>Tuesday 5:00</li>
-        <li>Mostly sunny</li>
-      </ul>
-      <div class="row">
-        <div class="col-6">
-          <img
-            src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-          />
-          <strong>18 </strong><span>℃ | <a href="#">℉</a></span>
-        </div>
-        <div class="col-6">
-          <ul>
-            <li>Humidity: 80%</li>
-            <li>Wind: 11km/h</li>
-          </ul>
+      <div class="border">
+        <h1>New York</h1>
+        <ul>
+          <li>Tuesday 5:00</li>
+          <li>Mostly sunny</li>
+        </ul>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="d-flex weather-temparature">
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+              />
+              <div class="float-left">
+                <strong class="temp">18 </strong>
+                <span class="units">℃ | <a href="#">℉</a></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <ul>
+              <li>Humidity: 80%</li>
+              <li>Wind: 11km/h</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
