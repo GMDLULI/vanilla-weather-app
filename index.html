@@ -17,10 +17,10 @@
   <body>
     <div class="container">
       <div class="border">
-        <h1>New York</h1>
+        <h1 id="city"></h1>
         <ul>
-          <li>Tuesday 5:00</li>
-          <li>Mostly sunny</li>
+          <li id="date">Tuesday 5:00</li>
+          <li id="description"></li>
         </ul>
 
         <div class="row">
@@ -30,19 +30,20 @@
                 src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
               />
               <div class="float-left">
-                <strong class="temp">18 </strong>
+                <strong class="temp"> </strong>
                 <span class="units">℃ | <a href="#">℉</a></span>
               </div>
             </div>
           </div>
           <div class="col-6">
             <ul>
-              <li>Humidity: 80%</li>
-              <li>Wind: 11km/h</li>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind-speed"></span>km/h</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
+    <script src="src/weather.js"></script>
   </body>
 </html>
