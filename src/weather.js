@@ -1,9 +1,9 @@
-let apiKey = "1289cd044582d3271e980de23db4457d";
+let apiKey = "68ed940b3b921df8ccf6e6331of75tba";
 let city = "Johannesburg";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+let date = new Date();
 
 function displayDate(timestamp) {
-  let date = new Date();
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -36,12 +36,25 @@ function DisplayWeather(response) {
   let windElement = document.querySelector("#wind-speed");
   let TempElement = document.querySelector(".temp");
   let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
 
-  cityElement.innerHTML = response.data.name;
-  descriptionElement.innerHTML = response.data.weather[0].description;
-  humidityElement.innerHTML = response.data.main.humidity;
-  windElement.innerHTML = Math.round(response.data.wind.speed);
-  TempElement.innerHTML = Math.round(response.data.main.temp);
-  dateElement.innerHTML = displayDate(response.data.dt * 1000);
+  cityElement.innerHTML = response.data.city;
+  descriptionElement.innerHTML =
+    response.data.daily[date.getDay()].condition.description;
+  humidityElement.innerHTML =
+    response.data.daily[date.getDay()].temperature.humidity;
+  windElement.innerHTML = Math.round(
+    response.data.daily[date.getDay()].wind.speed
+  );
+  TempElement.innerHTML = Math.round(
+    response.data.daily[date.getDay()].temperature.day
+  );
+  dateElement.innerHTML = displayDate(
+    response.data.daily[date.getDay()].time * 1000
+  );
+  iconElement.setAttribute(
+    "src",
+    response.data.daily[date.getDay()].condition.icon_url
+  );
 }
 axios.get(apiUrl).then(DisplayWeather);
