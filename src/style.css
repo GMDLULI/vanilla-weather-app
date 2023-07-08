@@ -4,7 +4,7 @@ body {
 
 ul {
   list-style: none;
-  padding: 0px;
+  padding: 10px;
   margin: 0px;
 }
 .units {
@@ -17,6 +17,10 @@ ul {
   margin-top: 10px;
   border: 20px solid aliceblue;
   border-radius: 5px;
+}
+
+#city {
+  padding: 10px;
 }
 
 .temp {
