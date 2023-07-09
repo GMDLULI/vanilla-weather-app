@@ -7,6 +7,9 @@ ul {
   padding: 10px;
   margin: 0px;
 }
+a {
+  text-decoration: none;
+}
 .units {
   line-height: 24px;
 }
@@ -42,9 +45,12 @@ ul {
   position: relative;
   font-size: 16px;
   top: 5px;
-  right: 10px;
 }
 
 #description::first-letter {
   text-transform: capitalize;
+}
+
+.active {
+  color: rgb(32, 33, 36);
 }

@@ -1,6 +1,3 @@
-let apiKey = "68ed940b3b921df8ccf6e6331of75tba";
-let city = "Johannesburg";
-let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
 let date = new Date();
 
 function displayDate(timestamp) {
@@ -38,6 +35,8 @@ function DisplayWeather(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
+  convertCelcius = response.data.daily[date.getDay()].temperature.day;
+
   cityElement.innerHTML = response.data.city;
   descriptionElement.innerHTML =
     response.data.daily[date.getDay()].condition.description;
@@ -46,9 +45,7 @@ function DisplayWeather(response) {
   windElement.innerHTML = Math.round(
     response.data.daily[date.getDay()].wind.speed
   );
-  TempElement.innerHTML = Math.round(
-    response.data.daily[date.getDay()].temperature.day
-  );
+  TempElement.innerHTML = Math.round(convertCelcius);
   dateElement.innerHTML = displayDate(
     response.data.daily[date.getDay()].time * 1000
   );
@@ -57,4 +54,41 @@ function DisplayWeather(response) {
     response.data.daily[date.getDay()].condition.icon_url
   );
 }
-axios.get(apiUrl).then(DisplayWeather);
+
+function handleSearch(event) {
+  event.preventDefault();
+  let cityElement = document.querySelector("#form-input");
+  search(cityElement.value);
+}
+
+function search(city) {
+  let apiKey = "68ed940b3b921df8ccf6e6331of75tba";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+  axios.get(apiUrl).then(DisplayWeather);
+}
+
+function displayFarenheitTemp() {
+  celcius.classList.remove("active");
+  farenheit.classList.add("active");
+  let farenheitValue = (convertCelcius * 9) / 5 + 32;
+  Temperature.innerHTML = Math.round(farenheitValue);
+}
+
+function displayCelciusTemp() {
+  farenheit.classList.remove("active");
+  celcius.classList.add("active");
+  Temperature.innerHTML = Math.round(convertCelcius);
+}
+
+search("Johannesburg");
+
+let Temperature = document.querySelector(".temp");
+let convertCelcius = null;
+let searchForm = document.querySelector("#form-search");
+searchForm.addEventListener("submit", handleSearch);
+
+let farenheit = document.querySelector("#farenheit-link");
+farenheit.addEventListener("click", displayFarenheitTemp);
+
+let celcius = document.querySelector("#celcius-link");
+celcius.addEventListener("click", displayCelciusTemp);
