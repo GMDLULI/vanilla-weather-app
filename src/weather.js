@@ -67,14 +67,16 @@ function search(city) {
   axios.get(apiUrl).then(DisplayWeather);
 }
 
-function displayFarenheitTemp() {
+function displayFarenheitTemp(event) {
+  event.preventDefault();
   celcius.classList.remove("active");
   farenheit.classList.add("active");
   let farenheitValue = (convertCelcius * 9) / 5 + 32;
   Temperature.innerHTML = Math.round(farenheitValue);
 }
 
-function displayCelciusTemp() {
+function displayCelciusTemp(event) {
+  event.preventDefault();
   farenheit.classList.remove("active");
   celcius.classList.add("active");
   Temperature.innerHTML = Math.round(convertCelcius);
