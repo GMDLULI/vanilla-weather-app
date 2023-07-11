@@ -15,57 +15,74 @@
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
   </head>
   <body>
-    <div class="border">
-      <div class="container">
-        <form id="form-search" class="mb-3 mt-3">
-          <div class="row">
-            <div class="col-9">
-              <input
-                type="search"
-                placeholder="type in city..."
-                class="form-control"
-                id="form-input"
-              />
+    <div class="weather-app">
+      <div class="border">
+        <div class="container">
+          <form id="form-search" class="mb-3 mt-3">
+            <div class="row">
+              <div class="col-9">
+                <input
+                  type="search"
+                  placeholder="type in city..."
+                  class="form-control"
+                  id="form-input"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  class="btn btn-primary w-100"
+                  type="submit"
+                  value="search"
+                />
+              </div>
             </div>
-            <div class="col-3">
-              <input
-                class="btn btn-primary w-100"
-                type="submit"
-                value="search"
-              />
-            </div>
-          </div>
-        </form>
-      </div>
-      <h1 id="city"></h1>
-      <ul>
-        <li id="date">Tuesday 5:00</li>
-        <li id="description"></li>
-      </ul>
+          </form>
+        </div>
+        <h1 id="city"></h1>
+        <ul>
+          <li id="date">Tuesday 5:00</li>
+          <li id="description"></li>
+        </ul>
 
-      <div class="row">
-        <div class="col-6">
-          <div class="d-flex weather-temparature">
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              id="icon"
-            />
-            <div class="float-left">
-              <strong class="temp"> </strong>
-              <span class="units"
-                ><a href="#" id="celcius-link" class="active">℃ </a>|
-                <a href="#" id="farenheit-link">℉</a></span
-              >
+        <div class="row">
+          <div class="col-6">
+            <div class="d-flex weather-temparature">
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                id="icon"
+              />
+              <div class="float-left">
+                <strong class="temp"> </strong>
+                <span class="units"
+                  ><a href="#" id="celcius-link" class="active">℃ </a>|
+                  <a href="#" id="farenheit-link">℉</a></span
+                >
+              </div>
             </div>
           </div>
+          <div class="col-6">
+            <ul>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind-speed"></span>km/h</li>
+            </ul>
+          </div>
         </div>
-        <div class="col-6">
-          <ul>
-            <li>Humidity: <span id="humidity"></span>%</li>
-            <li>Wind: <span id="wind-speed"></span>km/h</li>
-          </ul>
+        <div class="weather-forcast">
+          <div class="row">
+            <dis class="col-2">
+              <div class="day">Mon</div>
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                alt="sunny"
+                width="46"
+              />
+              <span class="weather-forcastTemp-max"><strong>28℃</strong></span>
+              <span class="weather-forcastTemp-min">12℃</span>
+            </dis>
+          </div>
         </div>
       </div>
+      <h6><a href="#">Open Source code </a> by Gugulethu Mdluli</h6>
     </div>
     <script src="src/weather.js"></script>
   </body>
