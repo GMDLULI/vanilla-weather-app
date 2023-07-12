@@ -24,24 +24,40 @@ function displayDate(timestamp) {
   return `${days[day]} ${hours}:${minutes}`;
 }
 
-function DisplayForcast() {
+function forcastDays(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  return days[day];
+}
+function DisplayForcast(response) {
   let forcastWeather = document.querySelector("#forcast");
+  let forcastDisplay = response.data.daily;
+  console.log(forcastDisplay);
 
-  let days = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
   let forcast = `<div class="row">`;
-  days.forEach(function (day) {
-    forcast =
-      forcast +
-      `<div class="col-2">
-              <div class="day">${day}</div>
+
+  forcastDisplay.forEach(function (forcastDay, index) {
+    if (index < 6) {
+      forcast =
+        forcast +
+        `<div class="col-2">
+              <div class="day">${forcastDays(forcastDay.time)}</div>
               <img
-                src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                src="${forcastDay.condition.icon_url}"
                 alt="sunny"
                 width="46"
               />
-              <span class="weather-forcastTemp-max"><strong>28℃</strong></span>
-              <span class="weather-forcastTemp-min">12℃</span>
+              <div class="weather-forcast-temps">
+                <span class="weather-forcastTemp-max"><strong>${Math.round(
+                  forcastDay.temperature.maximum
+                )}℃</strong></span> |
+                <span class="weather-forcastTemp-min">${Math.round(
+                  forcastDay.temperature.minimum
+                )}℃</span>
+              </div>
             </div>`;
+    }
   });
   forcast = forcast + `</div>`;
   forcastWeather.innerHTML = forcast;

@@ -71,3 +71,7 @@ a {
 h6 {
   text-align: center;
 }
+
+.weather-forcast-temps {
+  font-size: 12px;
+}
