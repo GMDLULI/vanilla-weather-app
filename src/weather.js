@@ -24,6 +24,36 @@ function displayDate(timestamp) {
   return `${days[day]} ${hours}:${minutes}`;
 }
 
+function DisplayForcast() {
+  let forcastWeather = document.querySelector("#forcast");
+
+  let days = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+  let forcast = `<div class="row">`;
+  days.forEach(function (day) {
+    forcast =
+      forcast +
+      `<div class="col-2">
+              <div class="day">${day}</div>
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                alt="sunny"
+                width="46"
+              />
+              <span class="weather-forcastTemp-max"><strong>28℃</strong></span>
+              <span class="weather-forcastTemp-min">12℃</span>
+            </div>`;
+  });
+  forcast = forcast + `</div>`;
+  forcastWeather.innerHTML = forcast;
+}
+
+function getForcast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "68ed940b3b921df8ccf6e6331of75tba";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey};`;
+  axios.get(apiUrl).then(DisplayForcast);
+}
+
 function DisplayWeather(response) {
   console.log(response.data);
 
@@ -53,6 +83,8 @@ function DisplayWeather(response) {
     "src",
     response.data.daily[date.getDay()].condition.icon_url
   );
+
+  getForcast(response.data.coordinates);
 }
 
 function handleSearch(event) {
